@@ -1,0 +1,2 @@
+t2appack TERMINUS2.hex
+PAUSE
