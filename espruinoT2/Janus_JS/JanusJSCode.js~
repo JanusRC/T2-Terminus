@@ -382,7 +382,7 @@ var ConnectionID = "";  //Set the default connection ID
 User Configuration
 *****************/
 //General Information/storage
-var myAPN = "yourAPNhere";         //Set the application APN
+var myAPN = "i2gold";         //Set the application APN
 var myPhone = "";             //Set the application phone number
 var LocalIP = "";             //Set the default application local IP address
 var LocalPort = 5556;         //Set the default application local port
@@ -391,7 +391,7 @@ var ConnMode = "Host";
 var ConnType = "Data";
 
 //Socket Dialing Host Info
-var RemoteHost = "your.host.here";  //Set the application remote host
+var RemoteHost = "clayton.conwin.com";  //Set the application remote host
 var RemotePort = 5556;                  //Set the application remote port
 
 //Socket Listening Whitelist
