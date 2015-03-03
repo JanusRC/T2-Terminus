@@ -18,6 +18,8 @@ Factory bootloader for the T2 Terminus.
 As the name implies, a simple copy/paste file tree for use with Keil to ensure all
 libraries and peripheral drivers are in place.
 
+### espruinoT2
+A port of the espruino project (see www.espruino.com), that allows the T2 Terminus to run Javascript with an easy to use and intuitive interface. 
 
 
 Demos
