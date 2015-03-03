@@ -57,7 +57,7 @@ This demonstration simply boots the modem and checks for regisration.
 
 Once regisration is confirmed, the demo exits.
 
-### Demo-SMSEcho
+### Demo_SMSEcho
 This demonstration boots the unit, registers, and waits for an incoming SMS. Once found it will echo the SMS back to the sender. 
 
 This is the only demo that contains a full looping/persistent mechanism.
