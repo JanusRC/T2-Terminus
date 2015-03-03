@@ -18,7 +18,9 @@ Subfolder to contain all of of the Janus espruino based javascript demos and ass
 Modules
 -----
 
-Use these with the require.('modulename') notation. Usage and example code is noted within each one. It's HIGHLY recommended that if using the WebIDE, you use the "module minification" option. The modules contain a lot of comments that eat up memory if you don't use this option. 
+Use these with the require.('modulename') notation. Usage and example code is noted within each one. For the modules that have larger apps to do more complex things, you can individually set the verbose mode to 'false' to keep the console prints quiet or not. 
+
+It's HIGHLY recommended that if using the WebIDE, you use the "module minification" option. The modules contain a lot of comments that eat up memory if you don't use this option.
 
 -T2HW
 Hardware defines for the T2 Terminus, for easier usage in the application. Currently this does not initialize any I/O, it just maps everything for ease. 
