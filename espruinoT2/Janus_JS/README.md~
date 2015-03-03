@@ -22,47 +22,47 @@ Use these with the require.('modulename') notation. Usage and example code is no
 
 It's HIGHLY recommended that if using the WebIDE, you use the "module minification" option. The modules contain a lot of comments that eat up memory if you don't use this option.
 
-## T2HW
+### T2HW
 Hardware defines for the T2 Terminus, for easier usage in the application. Currently this does not initialize any I/O, it just maps everything for ease. 
 
-## CF910
+### CF910
 Hardware handling of the Janus CF module, including powering up/down. This is aimed at the x910 variants of CF modules, not tested/optimized for older hardware. You can uncomment the I/O defines to use the CF modules outside of the T2 Terminus hardware. 
 
-## ATC
+### ATC
 AT Command handler, uses an iterative approach to commands since Espruino currently cannot do something like "send AT command, wait for response" in a single loop. It must return to idle state for backend processing of the received data. This may improve later with a more streamlined approach.
 
-## NETWORK
+### NETWORK
 Network interface handling. This includes checking registration and basic modem information such as SIM readiness and given phone number.
 
-## SMS
+### SMS
 SMS handling for sending and receiving text messages. Only supports text based messages, not PDU. 
 
-## SOCKET
+### SOCKET
 Socket/GPRS handling. This includes setting context information and activating. This also contains handlers for opening/closing of data or command based sockets.
 
-## BMA222
+### BMA222
 Driver for the on board accelerometer in the T2. Currently only supports polling, not the interrupts.
 
 Demos and Example Code
 ----------------------
 
 These are demonstrations written by Janus RC to show how to utilize the above modules in an M2M application. These are based on a clocking structure, codenamed "Tick-Tock". Wherein state machines are used to conform with Espruino's "return to idle" requirement. Information is noted within each one.
-Tick Programs - The main Programs/applications that run via state machine
-Tock Apps - The module apps/sub-machines that do more complicated things such as opening a socket.
+* `Tick Programs`: The main Programs/applications that run via state machine
+* `Tock Apps`: The module apps/sub-machines that do more complicated things such as opening a socket.
 
 These demos currently use a very basic approach, they do not make use of Espruino's interrupts (other than the main interval setting).
 
-## Demo_Registration
+### Demo_Registration
 This demonstration simply boots the modem and checks for regisration. 
 
 Once regisration is confirmed, the demo exits.
 
-## Demo-SMSEcho
+### Demo-SMSEcho
 This demonstration boots the unit, registers, and waits for an incoming SMS. Once found it will echo the SMS back to the sender. 
 
 This is the only demo that contains a full looping/persistent mechanism.
 
-## Demo_Serial2GPRS
+### Demo_Serial2GPRS
 This demonstration boots the unit, registers, and depending on how you set the configuration information it will open a socket to a remote host or listen for an incoming connection. Please understand that you will need a routable IP address or VPN to make use of the host option. 
 
 Once a connection has been opened, the DB9/serial port becomes a pipe to the host/client. 

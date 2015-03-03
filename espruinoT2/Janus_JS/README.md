@@ -47,8 +47,8 @@ Demos and Example Code
 ----------------------
 
 These are demonstrations written by Janus RC to show how to utilize the above modules in an M2M application. These are based on a clocking structure, codenamed "Tick-Tock". Wherein state machines are used to conform with Espruino's "return to idle" requirement. Information is noted within each one.
-Tick Programs - The main Programs/applications that run via state machine
-Tock Apps - The module apps/sub-machines that do more complicated things such as opening a socket.
+* `Tick Programs`: The main Programs/applications that run via state machine
+* `Tock Apps`: The module apps/sub-machines that do more complicated things such as opening a socket.
 
 These demos currently use a very basic approach, they do not make use of Espruino's interrupts (other than the main interval setting).
 
