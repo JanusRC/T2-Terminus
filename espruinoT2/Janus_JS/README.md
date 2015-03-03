@@ -46,7 +46,7 @@ Driver for the on board accelerometer in the T2. Currently only supports polling
 Demos and Example Code
 ----------------------
 
-These are demonstrations written by Janus RC to show how to utilize the above modules in an M2M application. These are based on a clocking structure, codenamed "Tick-Tock". Wherein state machines are used to conform with Espruino's "return to idle" requirement. Information is noted within each one.
+These are demonstrations written by Janus RC to show how to utilize the above modules in an M2M application. These are based on a clocking structure, codenamed `Tick-Tock`. Wherein state machines are used to conform with Espruino's "return to idle" requirement. Information is noted within each one.
 * `Tick Programs`: The main Programs/applications that run via state machine
 * `Tock Apps`: The module apps/sub-machines that do more complicated things such as opening a socket.
 
