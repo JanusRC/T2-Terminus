@@ -117,6 +117,8 @@ void jswrap_spi_setup(JsVar *parent, JsVar *options) {
 Send data down SPI, and return the result
 
 Sending multiple bytes in one call to send is preferable as they can then be transmitted end to end. Using multiple calls to send() will result in significantly slower transmission speeds.
+
+For maximum speeds, please pass either Strings or Typed Arrays as arguments.
 */
 JsVar *jswrap_spi_send(JsVar *parent, JsVar *srcdata, Pin nss_pin) {
   NOT_USED(parent);
@@ -230,7 +232,9 @@ JsVar *jswrap_spi_send(JsVar *parent, JsVar *srcdata, Pin nss_pin) {
     ["data","JsVarArray",["One or more items to write. May be ints, strings, arrays, or objects of the form `{data: ..., count:#}`.","If the last argument is a pin, it is taken to be the NSS pin"]]
   ]
 }
-Write a character or array of characters to SPI - without reading the result back
+Write a character or array of characters to SPI - without reading the result back.
+
+For maximum speeds, please pass either Strings or Typed Arrays as arguments.
 */
 void jswrap_spi_write(JsVar *parent, JsVar *args) {
   NOT_USED(parent);
@@ -325,6 +329,8 @@ void jswrap_spi_send4bit(JsVar *parent, JsVar *srcdata, int bit0, int bit1, Pin 
     jsExceptionHere(JSET_ERROR, "Variable type %t not suited to transmit operation", srcdata);
   }
 
+  jshSPIWait(device); // wait until SPI send finished and clear the RX buffer
+
   // de-assert NSS
   if (nss_pin!=PIN_UNDEFINED) jshPinOutput(nss_pin, true);
   jshSPISet16(device, false); // back to 8 bit
@@ -389,6 +395,8 @@ void jswrap_spi_send8bit(JsVar *parent, JsVar *srcdata, int bit0, int bit1, Pin 
   } else {
     jsExceptionHere(JSET_ERROR, "Variable type %t not suited to transmit operation", srcdata);
   }
+
+  jshSPIWait(device); // wait until SPI send finished and clear the RX buffer
 
   // de-assert NSS
   if (nss_pin!=PIN_UNDEFINED) jshPinOutput(nss_pin, true);

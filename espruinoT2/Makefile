@@ -50,8 +50,13 @@ T2_STM32F4=1
 # SINGLETHREAD=1          # Compile single-threaded to make compilation errors easier to find
 # BOOTLOADER=1            # make the bootloader (not Espruino)
 # PROFILE=1               # Compile with gprof profiling info
+# CFILE=test.c            # Compile in the supplied C file
+# CPPFILE=test.cpp        # Compile in the supplied C++ file
+#
+#
 # WIZNET=1                # If compiling for a non-linux target that has internet support, use WIZnet support, not TI CC3000
 # ESP8266=1               # If compiling for a non-linux target that has internet support, use ESP8266 support, not TI CC3000
+
 ifndef SINGLETHREAD
 MAKEFLAGS=-j5 # multicore
 endif
@@ -120,6 +125,7 @@ USE_NET=1
 USE_GRAPHICS=1
 USE_FILESYSTEM=1
 USE_TV=1
+USE_HASHLIB=1
 BOARD=ESPRUINOBOARD
 STLIB=STM32F10X_XL
 PRECOMPILED_OBJS+=$(ROOT)/targetlibs/stm32f1/lib/startup_stm32f10x_hd.o
@@ -151,6 +157,7 @@ DEFINES+= -DUSE_USB_OTG_FS=1  -DPICO -DPICO_1V2
 USE_NET=1
 USE_GRAPHICS=1
 USE_TV=1
+USE_HASHLIB=1
 BOARD=PICO_R1_2
 STLIB=STM32F401xx
 PRECOMPILED_OBJS+=$(ROOT)/targetlibs/stm32f4/lib/startup_stm32f401xx.o
@@ -519,6 +526,13 @@ src/jstimer.c \
 src/jsspi.c \
 $(WRAPPERFILE)
 CPPSOURCES =
+
+ifdef CFILE
+WRAPPERSOURCES += $(CFILE)
+endif
+ifdef CPPFILE
+CPPSOURCES += $(CPPFILE)
+endif
 
 ifdef BOOTLOADER
 ifndef USE_BOOTLOADER
@@ -1096,6 +1110,7 @@ targets/linux/main.c                    \
 targets/linux/jshardware.c
 LIBS += -lm # maths lib
 LIBS += -lpthread # thread lib for input processing
+LIBS += -lstdc++
 endif
 
 ifdef NUCLEO

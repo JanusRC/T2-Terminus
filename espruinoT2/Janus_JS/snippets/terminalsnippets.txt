@@ -1,0 +1,1 @@
+{"Reset":"reset();","Memory":"process.memory();","ClearInterval":"clearInterval();","ModemONOFF":"mdmTurnOnOff(5000)","TerminalOFF":"mdmTerminal_Disable();","TerminalON":"mdmTerminal_RS232(115200,115200);","Demo.SMSEcho":"RunApp(SMSEcho)","Demo.TestProgram":"RunApp(TestProgram)","Demo.SerialBridge":"RunApp(S2GPRSBridge)","StopDemo":"StopApp()","TestStub":"RunApp(TestStub)"}
