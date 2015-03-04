@@ -77,7 +77,7 @@ T2HW.prototype.Header = {
 
 //Special Use        //Pin #:  Special Function
 //----------------------------------------------------------------
-  IGNITION   : C13,  //Pin 3:  Input, Optically Isolated, must pull up
+  IGNITION   : C13  //Pin 3:  Input, Optically Isolated, must pull up
  
 //Special Use (Not MCU connected, just documentation) 
 //                    Pin #  :  Description
@@ -102,10 +102,10 @@ T2HW.prototype.DB9 = {
 //RS232              Pin #  :   Description
 //----------------------------------------------------------------
   SERIAL     : Serial3,        //Serial interface for the DB9
-  TXD		 : B10,  //N/A  :  USART3_TX
-  RXD		 : B11,  //N/A  :  USART3_RX
-  CTS		 : D11,  //N/A  :  USART3_CTS
-  RTS		 : D12,  //N/A  :  USART3_RTS
+  TXD        : B10,  //N/A  :  USART3_TX
+  RXD        : B11,  //N/A  :  USART3_RX
+  CTS        : D11,  //N/A  :  USART3_CTS
+  RTS        : D12,  //N/A  :  USART3_RTS
   FORCEOFF   : F4,   //N/A  :  Output, Active high enable
   FORCEON    : F3,   //N/A  :  Output, Active high enable
   INVALID    : E15   //N/A  :  Input, Active high when valid RS232 signal
@@ -118,10 +118,10 @@ T2HW.prototype.DB9 = {
 T2HW.prototype.RS485 = {
 //RS485              Pin #  :   Description
 //----------------------------------------------------------------
-  DIR   : D4,   	//N/A  :  Direction | UASRT2_RTS, pulled down
-  DIN   : D5,   	//N/A  :  Data out  | USART2_TX, pulled up
-  RO   	: D6,   	//N/A  :  Data in   | USART2_RX
-}
+  DIR   : D4,       //N/A  :  Direction | UASRT2_RTS, pulled down
+  DIN   : D5,       //N/A  :  Data out  | USART2_TX, pulled up
+  RO    : D6       //N/A  :  Data in   | USART2_RX
+};
 
 T2HW.prototype.CL = {
 //20mA Current Loops Pin #  :   Description
@@ -132,15 +132,15 @@ T2HW.prototype.CL = {
   CL2_RESET  : E0,   //N/A  :  Output, Active low reset
   CL2_TRIP   : D15,  //N/A  :  Input, Active high overcurrent trip
   CL2_VOUT   : B1    //N/A  :  ADC Input, ADC12_IN9
-}
+};
 
 T2HW.prototype.CAN = {
 //CAN               Pin #  :   Description
 //----------------------------------------------------------------
-  TXD   : D1,   	//N/A  :  Data out | CAN1_TX
-  RXD   : D0,   	//N/A  :  Data in  | CAN1_RX
-  EN   	: E6,   	//N/A  :  Data in  | GPIO, pulled up
-}
+  TXD   : D1,        //N/A  :  Data out | CAN1_TX
+  RXD   : D0,        //N/A  :  Data in  | CAN1_RX
+  EN    : E6        //N/A  :  Data in  | GPIO, pulled up
+};
 
 /************
 //SD CARD
@@ -206,8 +206,8 @@ T2HW.prototype.MODEM = {
   STAT_LED   : G1,     //N/A  :  Modem status LED, output, active high
   GPS_RESET  : D10,    //N/A  :  Modem GPS reset, legacy (DNC)
   //UART
-  RXD		 : C7,     //N/A  :  Modem UART RXD
-  TXD		 : C6,     //N/A  :  Modem UART TXD
+  RXD        : C7,     //N/A  :  Modem UART RXD
+  TXD        : C6,     //N/A  :  Modem UART TXD
   CTS        : G15,    //N/A  :  Modem UART CTS
   RTS        : G12,    //N/A  :  Modem UART RTS
   DSR        : D3,     //N/A  :  Modem UART DSR

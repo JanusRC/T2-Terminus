@@ -23,7 +23,7 @@ info = {
  'default_console_baudrate' : "115200", # Baudrate default
  'variables' : 5450,
  'binary_name' : 'espruino_%v_T2stm32f4.bin',
- #'bootloader' : 1,
+ 'bootloader' : 1,
 };
 chip = {
   'part' : "STM32F405ZGT6",
