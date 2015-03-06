@@ -22,7 +22,7 @@ This module helps make use of the Telit SMS functionality
 
 How to use my module:
 var atc = require("ATC").ATC(Serial6);
-var sms = require("SMS").SMS(atc);
+var sms = require("SMS").SMS(atc,true);
 
 Example discrete call, an outer state machine with a set interval is best used.
 sms.setupSMS();
@@ -122,10 +122,10 @@ SMS.prototype.sendSMS = function (inPhone, inMessage) {
         res = this.atc.receiveAT("OK");
         if (res !== -1 && res !== -2 && res !== "ERROR") {
           this.atc.CTS = 1; //Set the send flag again
-		  ModeFlag = 0;
+          ModeFlag = 0;
           //Parse the response, this includes the SMS ID if we want to use it.
           this.info.outID = this.atc.parseResponse(res);
-		  res = "OK"; //Just send OK
+          res = "OK"; //Just send OK
         }
       }
 	}
@@ -193,7 +193,7 @@ SMS.prototype.setupSMS = function () {
    //App finished
    //****************************************************
     case "Finished":
-	  if (this.verbose){console.log("-->SMS Setup Complete.");}
+      if (this.verbose){console.log("-->SMS Setup Complete.");}
       this.appSwitch = "";
       this.appStatus = 1;
       break;
@@ -205,7 +205,7 @@ SMS.prototype.setupSMS = function () {
       this.appSwitch = "Start";
   }
   return this.appStatus;
-}
+};
 
 SMS.prototype.checkForSMS = function () {
   /***************
@@ -307,7 +307,7 @@ SMS.prototype.checkForSMS = function () {
       this.appSwitch = "Start";
   }
   return this.appStatus;
-}
+};
 
 exports.SMS = function (_atc,_verb) {
   return new SMS(_atc,_verb);

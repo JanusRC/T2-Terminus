@@ -22,7 +22,7 @@ This module helps make use of the Telit Socket functionality
 
 How to use my module:
 var atc = require("ATC").ATC(Serial6);
-var mySocket = require("SOCKET").SOCKET(atc,1,1);
+var mySocket = require("SOCKET").SOCKET(atc,1,1,"myapn",true);
 
 Example discrete call, an outer state machine with a set interval is best used.
 mySocket.openSocket("Client", "Data", "clayton.conwin.com", 5556)
@@ -97,8 +97,7 @@ function SOCKET(_atc, _cid, _sid, _apn, _verb) {
 		}
       } else {
 		return res;
-	  }
-	  
+      }
   };
 }
 
@@ -121,14 +120,14 @@ SOCKET.prototype.setContext = function () {
 SOCKET.prototype.setSocket = function () {
   //Sets the socket information via the SCFG command
   //SCFG=1,1,1500,0,300,1
-  //	 1,1,300,90,600,50
+  //     1,1,300,90,600,50
   return this.atc.sendAT('AT#SCFG=' + this.socketID + ',' + this.contextID + ',1500,0,600,1',"OK");
 };
 
 SOCKET.prototype.setSocketExt = function () {
   //Sets the socket information via the SCFGEXT command
   //AT#SCFGEXT=1,0,0,30,0,0
-  //		   1,2,0,30,1,0
+  //           1,2,0,30,1,0
   return this.atc.sendAT('AT#SCFGEXT=' + this.socketID + ',0,0,30,0,0',"OK");
 };
 
@@ -256,7 +255,7 @@ SOCKET.prototype.sendCMDMode = function (inData) {
         res = this.atc.receiveAT("OK");
         if (res !== -1 && res !== -2 && res.indexOf('ERROR',0) === -1) {
           this.atc.CTS = 1; //Set the send flag again
-		  ModeFlag = 0;
+          ModeFlag = 0;
           //Parse the response, return it
           return this.atc.parseResponse(res);
         }
@@ -277,9 +276,9 @@ SOCKET.prototype.receiveCMDMode = function (inLength) {
   if (ModeFlag === 0) {
       //Send the AT command to start via println
       this.atc.serial.println('AT#SRECV=' + this.socketID + ',' + inLength);
-	  this.atc.CTS = 0; //Clear send flag
+      this.atc.CTS = 0; //Clear send flag
       ModeFlag = 1;
-	  res = -1; //show that this isn't complete yet
+      res = -1; //show that this isn't complete yet
     } else {
       //Wait for the OK
       res = this.atc.receiveAT("OK");
@@ -289,7 +288,7 @@ SOCKET.prototype.receiveCMDMode = function (inLength) {
 		ModeFlag = 0;
         splitList = res.split('\r\n');
 		res = splitList[2];
-	  }
+      }
 	}
   return res;
 };
@@ -353,7 +352,7 @@ SOCKET.prototype.openSocket = function (inMode, inType, inIP, inPort) {
 
     case "SocketInfo":
       //Display socket connection information
-	  //Check for already opened sockets on command mode based things
+      //Check for already opened sockets on command mode based things
       this.connMode = inMode;
       if (inMode === "Client") {
         if (this.verbose){console.log("-->Opening a " + inType + " socket to: " + inIP + ":" + inPort);}
@@ -423,7 +422,7 @@ SOCKET.prototype.openSocket = function (inMode, inType, inIP, inPort) {
 		//Already have a listener up, move on
 		this.localPort = inPort;
         this.appSwitch = "Finished";
-	  } else {
+      } else {
         if (this.verbose){console.log("-->Socket Not Open: " + res);}
       }
       break;

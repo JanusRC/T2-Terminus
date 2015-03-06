@@ -52,8 +52,8 @@ var CF910_IO = {
   GPS_RESET  : D10,
 
   //UART
-  RXD		 : C7,
-  TXD		 : C6,
+  RXD        : C7,
+  TXD        : C6,
   DSR        : D3,
   RING       : D7,
   DCD        : D8,
@@ -86,14 +86,14 @@ function CF910(_serial,_atbaud,_statled) {
 
   //Initialize the modem
   this.init();
-  
+
   this.status = function () {
-	  var tmp = this.getPWRMON();
-	  if (tmp === 1) {
-		  return "On";
-	  } else {
-		  return "Off";
-	  }
+      var tmp = this.getPWRMON();
+      if (tmp === 1) {
+        return "On";
+      } else {
+        return "Off";
+      }
   };
 }
 
@@ -130,8 +130,8 @@ CF910.prototype.setIO = function () {
   pinMode(CF910_IO.DSR,'input');           //Modem DSR
   pinMode(CF910_IO.DCD,'input');           //Modem DCD
   pinMode(CF910_IO.RING,'input');          //Modem RING
-  pinMode(CF910_IO.RTS,'output'); 		   //Modem RTS
-  pinMode(CF910_IO.DTR,'output'); 		   //Modem DTR
+  pinMode(CF910_IO.RTS,'output');          //Modem RTS
+  pinMode(CF910_IO.DTR,'output');          //Modem DTR
 
   //Modem Feedback I/O, set to floating inputs
   pinMode(CF910_IO.PWRMON,'input');        //Modem PWRMON

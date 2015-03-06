@@ -11,7 +11,7 @@ Subfolder to contain all of of the Janus espruino based javascript demos and ass
 ### Directories and Files
 
 * `firmware/`:          Precompiled Files
-* `./Bin/`:          	Precompiled espruino binaries, with and without bootloader options set
+* `./Bin/`:          	Precompiled espruino binaries, with and without bootloader (NoBL) options set
 * `./T2_Bootloader/`:   Precompiled T2 bootloaders for use with espruino, both .dfu and .hex format.
 * `modules/`:           Modules created by Janus for use with the T2/910CF
 * `projects/`:          Demo code and examples created by Janus

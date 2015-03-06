@@ -22,7 +22,7 @@ This module helps make use of the Telit network checks & registration
 
 How to use my module:
 var atc = require("ATC").ATC(Serial6);
-var myNetwork = require("NETWORK").NETWORK(atc);
+var myNetwork = require("NETWORK").NETWORK(atc, true);
 
 Example discrete call, an outer state machine with a set interval is best used.
 myNetwork.status()
