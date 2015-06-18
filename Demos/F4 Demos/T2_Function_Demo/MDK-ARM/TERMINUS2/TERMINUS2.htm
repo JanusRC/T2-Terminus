@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\TERMINUS2\TERMINUS2.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\TERMINUS2\TERMINUS2.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Thu Jun 18 11:17:50 2015
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Thu Jun 18 15:08:11 2015
 <BR><P>
-<H3>Maximum Stack Usage =        756 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        772 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; TerminalMode &rArr; SMS_ProcessSMS &rArr; SendATStrML &rArr; Uart_SendMessage &rArr; Uart_SendBuffer &rArr; Fifo_Insert &rArr; Fifo_Free
 <P>
@@ -1393,8 +1393,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TerminalMode
 </UL>
 
-<P><STRONG><a name="[d2]"></a>TerminalMode</STRONG> (Thumb, 4132 bytes, Stack size 296 bytes, terminal.o(i.TerminalMode))
-<BR><BR>[Stack]<UL><LI>Max Depth = 732<LI>Call Chain = TerminalMode &rArr; SMS_ProcessSMS &rArr; SendATStrML &rArr; Uart_SendMessage &rArr; Uart_SendBuffer &rArr; Fifo_Insert &rArr; Fifo_Free
+<P><STRONG><a name="[d2]"></a>TerminalMode</STRONG> (Thumb, 4216 bytes, Stack size 312 bytes, terminal.o(i.TerminalMode))
+<BR><BR>[Stack]<UL><LI>Max Depth = 748<LI>Call Chain = TerminalMode &rArr; SMS_ProcessSMS &rArr; SendATStrML &rArr; Uart_SendMessage &rArr; Uart_SendBuffer &rArr; Fifo_Insert &rArr; Fifo_Free
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart_ForwardFullDuplex
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sleep
@@ -1773,7 +1773,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[5c]"></a>main</STRONG> (Thumb, 348 bytes, Stack size 24 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 756<LI>Call Chain = main &rArr; TerminalMode &rArr; SMS_ProcessSMS &rArr; SendATStrML &rArr; Uart_SendMessage &rArr; Uart_SendBuffer &rArr; Fifo_Insert &rArr; Fifo_Free
+<BR><BR>[Stack]<UL><LI>Max Depth = 772<LI>Call Chain = main &rArr; TerminalMode &rArr; SMS_ProcessSMS &rArr; SendATStrML &rArr; Uart_SendMessage &rArr; Uart_SendBuffer &rArr; Fifo_Insert &rArr; Fifo_Free
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart_Enable
 <LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART6_Configuration

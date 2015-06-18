@@ -38,7 +38,7 @@ void TerminalHelp(void)
   printf("IDENTIFY       Identification Information of the Modem\r\n");
 	printf("--NETWORK--\r\n");
   printf("REGISTER       Register on Network\r\n");
-  printf("ACTIVATE       Activate Context\r\n");
+  printf("ACTIVATE x     Activate Context w/ x APN\r\n");
   printf("DEACTIVATE     Deactivate Context\r\n");
 	printf("--SMS--\r\n");
   printf("SENDSMS 1 2    Send SMS Text Message: 1=Phone Number, 2=Text String\r\n");
@@ -241,28 +241,45 @@ void TerminalMode(int TimeOut, UART *UartDB9, UART *UartModem, SMSSTRUCT *SMSPoi
 					printf("Modem Not on.\r\n");
       }
       //==================================================================== activate
-      else if (stricmp(s, "activate") == 0)
+      else if (strnicmp(s, "activate", 8) == 0)
       {
+				char inAPN[20];	//20 chars, ex: 'epc.tmobile.com'
+				
+				memset(inAPN, 0, sizeof(inAPN)); 	
+				
         if (UartModem->NetworkCellRegState)
         {
-					printf("Activating Context.\r\n");
-					Fault = Network_SetupContext(UartModem, "i2gold");
+					//Scan standard string for the APN to use
+					//Increment again + length of APN
+					if (sscanf(s+(9+strlen(inAPN)),"%s",inAPN) == 1)
+					{							
+						printf("Activating Context.\r\n");
+						
+						//Run the setup routine
+						Fault = Network_SetupContext(UartModem, inAPN);
 
-					if (!Fault) Fault = Network_GetContext(UartModem);
-					
-					if ((!UartModem->NetworkActivationState) && (!Fault))
-						Fault = Network_ActivateContext(UartModem, "", "");
-					
-					if (!Fault)
-					{
-						printf("Context set up.\r\n");
-						printf("State: [%d] || IP: [%s]\r\n", UartModem->NetworkActivationState, UartModem->NetworkIP);
+						if (!Fault) Fault = Network_GetContext(UartModem);
+						
+						if ((!UartModem->NetworkActivationState) && (!Fault))
+							Fault = Network_ActivateContext(UartModem, "", "");
+						
+						if (!Fault)
+						{
+							printf("Context set up.\r\n");
+							printf("State: [%d] || IP: [%s]\r\n", UartModem->NetworkActivationState, UartModem->NetworkIP);
+						}
+						else
+							printf("Error: Creating Context: %08X\n",Fault);
 					}
 					else
-						printf("Error: Creating Context: %08X\n",Fault);
+						printf("No APN Entered.\r\n");
         }
 				else
 					printf("Modem Not Registered.\r\n");
+				
+				//Reset the S memory location, without this the APN may be retained
+				//9 = "activate "
+				memset(s, 0, (9+sizeof(inAPN))); 
       }
       //==================================================================== deactivate
       else if (stricmp(s, "deactivate") == 0)
@@ -290,7 +307,7 @@ void TerminalMode(int TimeOut, UART *UartDB9, UART *UartModem, SMSSTRUCT *SMSPoi
       else if (strnicmp(s, "sendsms", 7) == 0)
       {
 				char inPN[16];				//x-xxx-xxx-xxxx
-				char inText[200];				//184 chars
+				char inText[200];			//200 chars
 				
 				memset(inText, 0, sizeof(inText)); 	
 				memset(inPN, 0, sizeof(inPN));				
