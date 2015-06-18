@@ -22,8 +22,8 @@ libraries and peripheral drivers are in place.
 A port of the espruino project (see www.espruino.com), that allows the T2 Terminus to run Javascript with an easy to use and intuitive interface. 
 
 
-### C Demos
-Demos for the T2 Terminus, split into F2 and F4 variants if necessary.
+### Demos
+C language demos for the T2 Terminus, split into F2 and F4 variants if necessary.
 
 
 

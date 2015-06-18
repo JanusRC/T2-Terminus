@@ -9,11 +9,11 @@ of the F4 version.
 
 ### F2 Demos
 
-`bin`: Container for pre-compiled binary files, ready for production bootloader upload.
-
 `T2_F4_VCP_Demo`: Virtual COM port demo that allows the user to talk with the internal modem via AT commands through the USB port instead of the DB9.
 
 ### F4 Demos
+
+`bin`: Container for pre-compiled binary files, ready for production bootloader upload.
 
 `T2_F4_VCP_Demo`: Virtual COM port demo that allows the user to talk with the internal modem via AT commands through the USB port instead of the DB9.
 
